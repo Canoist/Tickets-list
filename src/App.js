@@ -1,9 +1,15 @@
 import FlightRoundedIcon from "@mui/icons-material/FlightRounded";
 import { Box, Icon } from "@mui/material";
+import { useState } from "react";
 import FilterBox from "./components/ui/filterBox";
+import TicketsList from "./components/ui/ticketsList";
 import { flexCenter } from "./innerStyles";
+import ticketsJSON from "./mock/tickets";
+
+const initialData = ticketsJSON;
 
 function App() {
+    const [tickets, setTickets] = useState(ticketsJSON);
     return (
         <Box
             sx={{
@@ -32,12 +38,12 @@ function App() {
             <Box
                 sx={{
                     backgroundColor: "gold",
-                    maxWidth: "600px",
+                    maxWidth: "680px",
                     ...flexCenter,
                     alignItems: "start",
                 }}>
                 <FilterBox />
-                <Box></Box>
+                <TicketsList data={tickets} />
             </Box>
         </Box>
     );
