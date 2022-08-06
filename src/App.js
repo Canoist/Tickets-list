@@ -19,6 +19,7 @@ function App() {
                     p: "15px",
                     boxShadow: "0 0 16px grey",
                     ...flexCenter,
+                    mb: 5,
                 }}>
                 <FlightRoundedIcon
                     fontSize="large"

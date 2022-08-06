@@ -12,6 +12,14 @@ import {
     Typography,
 } from "@mui/material";
 
+const values = [
+    "Все",
+    "Без пересадок",
+    "1 пересадка",
+    "2 пересадки",
+    "3 пересадки",
+];
+
 const FilterBox = () => {
     const [checked, setChecked] = useState([0]);
 
@@ -29,46 +37,57 @@ const FilterBox = () => {
     };
     return (
         <Box sx={{ p: 2 }}>
-            <Typography variant="subtitle1" display="block">
-                ВАЛЮТА
+            <Typography
+                sx={{ textTransform: "uppercase" }}
+                variant="subtitle1"
+                display="block">
+                Валюта
             </Typography>
             <ButtonGroup
                 variant="outlined"
-                aria-label="outlined primary button group">
+                aria-label="outlined primary button group"
+                fullWidth
+                sx={{ mb: 3 }}>
                 <Button>RUB</Button>
                 <Button>USD</Button>
                 <Button>EUR</Button>
             </ButtonGroup>
+            <Typography
+                sx={{ textTransform: "uppercase" }}
+                variant="body1"
+                display="block"
+                gutterBottom>
+                Количество пересадок
+            </Typography>
             <List
                 sx={{
                     width: "100%",
                     maxWidth: 360,
                     bgcolor: "background.paper",
-                }}>
-                {[0, 1, 2, 3].map((value) => {
-                    const labelId = `checkbox-list-label-${value}`;
+                }}
+                dense={true}>
+                {values.map((value, index) => {
+                    const labelId = `checkbox-list-label-${index}`;
 
                     return (
-                        <ListItem key={value} disablePadding>
+                        <ListItem key={index} disablePadding>
                             <ListItemButton
                                 role={undefined}
                                 onClick={handleToggle(value)}
                                 dense>
-                                <ListItemIcon>
+                                <ListItemIcon sx={{ minWidth: "20px" }}>
                                     <Checkbox
                                         edge="start"
                                         checked={checked.indexOf(value) !== -1}
                                         tabIndex={-1}
+                                        size="small"
                                         disableRipple
                                         inputProps={{
                                             "aria-labelledby": labelId,
                                         }}
                                     />
                                 </ListItemIcon>
-                                <ListItemText
-                                    id={labelId}
-                                    primary={`Line item ${value + 1}`}
-                                />
+                                <ListItemText id={labelId} primary={value} />
                             </ListItemButton>
                         </ListItem>
                     );
