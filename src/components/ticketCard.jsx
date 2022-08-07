@@ -3,20 +3,19 @@ import PropTypes from "prop-types";
 import { Box, Button, Card, CardContent, Typography } from "@mui/material";
 import correctPrice from "../utils.js/correctPrice";
 import { flexCenter } from "../innerStyles";
+import FlightIcon from "./flightIcon";
 
-const tipes = {
-    arrival_date: "12.05.18",
-    arrival_time: "22:10",
-    carrier: "TK",
-    departure_date: "12.05.18",
-    departure_time: "16:20",
-    destination: "TLV",
-    destination_name: "Тель-Авив",
-    origin: "VVO",
-    origin_name: "Владивосток",
-    price: 12400,
-    stops: 3,
-};
+// arrival_date: "12.05.18",
+// arrival_time: "22:10",
+// carrier: "TK",
+// departure_date: "12.05.18",
+// departure_time: "16:20",
+// destination: "TLV",
+// destination_name: "Тель-Авив",
+// origin: "VVO",
+// origin_name: "Владивосток",
+// price: 12400,
+// stops: 3,
 
 const TicketCard = ({ ticket }) => {
     return (
@@ -44,6 +43,7 @@ const TicketCard = ({ ticket }) => {
                     <Typography variant="h4">
                         {ticket.departure_time}
                     </Typography>
+                    <FlightIcon label="Без пересадок" />
                     <Typography variant="h4">
                         {ticket.departure_time}
                     </Typography>
