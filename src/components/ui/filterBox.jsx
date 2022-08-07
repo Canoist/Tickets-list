@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import {
-    Button,
-    ButtonGroup,
     Card,
     Checkbox,
     List,
@@ -12,6 +10,7 @@ import {
     Typography,
 } from "@mui/material";
 import PropTypes from "prop-types";
+import CurrencyControl from "./currentControl";
 
 const values = [
     "Все",
@@ -37,10 +36,6 @@ const FilterBox = ({ onChangeType, currency }) => {
         setChecked(newChecked);
     };
 
-    const handleChangeType = ({ target }) => {
-        onChangeType(target.id);
-    };
-
     return (
         <Card
             sx={{
@@ -48,40 +43,7 @@ const FilterBox = ({ onChangeType, currency }) => {
                 mx: 2,
                 width: "220px",
             }}>
-            <Typography
-                sx={{
-                    fontWeight: 500,
-                    textTransform: "uppercase",
-                    fontSize: "0.9rem",
-                }}
-                paragraph
-                display="block">
-                Валюта
-            </Typography>
-            <ButtonGroup
-                variant="outlined"
-                aria-label="outlined primary button group"
-                fullWidth
-                sx={{ mb: 3 }}>
-                <Button
-                    id="rub"
-                    onClick={handleChangeType}
-                    variant={currency === "rub" ? "contained" : "outlined"}>
-                    RUB
-                </Button>
-                <Button
-                    id="usd"
-                    onClick={handleChangeType}
-                    variant={currency === "usd" ? "contained" : "outlined"}>
-                    USD
-                </Button>
-                <Button
-                    id="eur"
-                    onClick={handleChangeType}
-                    variant={currency === "eur" ? "contained" : "outlined"}>
-                    EUR
-                </Button>
-            </ButtonGroup>
+            <CurrencyControl currency={currency} onChangeType={onChangeType} />
             <Typography
                 sx={{
                     textTransform: "uppercase",
@@ -101,7 +63,6 @@ const FilterBox = ({ onChangeType, currency }) => {
                 dense={true}>
                 {values.map((value, index) => {
                     const labelId = `checkbox-list-label-${index}`;
-
                     return (
                         <ListItem key={index} disablePadding>
                             <ListItemButton
