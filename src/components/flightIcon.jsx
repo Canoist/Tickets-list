@@ -12,10 +12,7 @@ const FlightIcon = ({ label }) => {
                 flexGrow: "1",
                 flexDirection: "column",
             }}>
-            <Typography
-                component="p"
-                sx={{ color: "rgba(0, 0, 0, 0.26)", fontSize: "0.8rem" }}
-                variant="body2">
+            <Typography component="p" variant="secondary">
                 {label}
             </Typography>
             <Box

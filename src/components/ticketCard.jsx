@@ -4,6 +4,7 @@ import { Box, Button, Card, CardContent, Typography } from "@mui/material";
 import correctPrice from "../utils.js/correctPrice";
 import { flexCenter } from "../innerStyles";
 import FlightIcon from "./flightIcon";
+import translateDate from "../utils.js/translateDate";
 
 // arrival_date: "12.05.18",
 // arrival_time: "22:10",
@@ -46,7 +47,27 @@ const TicketCard = ({ ticket }) => {
                     <FlightIcon label="Без пересадок" />
                     <Typography variant="h4">{ticket.arrival_time}</Typography>
                 </Box>
-                <Box></Box>
+                <Box
+                    sx={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                    }}>
+                    <Typography variant="body2">
+                        {ticket.origin}, {ticket.origin_name}
+                        <Typography component="div" variant="secondary">
+                            {translateDate(ticket.departure_date)}
+                        </Typography>
+                    </Typography>
+                    <Typography variant="body2">
+                        {ticket.destination_name}, {ticket.destination}
+                        <Typography
+                            component="div"
+                            align="right"
+                            variant="secondary">
+                            {translateDate(ticket.arrival_date)}
+                        </Typography>
+                    </Typography>
+                </Box>
             </CardContent>
         </Card>
     );
