@@ -12,7 +12,12 @@ const FlightIcon = ({ label }) => {
                 flexGrow: "1",
                 flexDirection: "column",
             }}>
-            <Typography variant="body2">{label}</Typography>
+            <Typography
+                component="p"
+                sx={{ color: "rgba(0, 0, 0, 0.26)", fontSize: "0.8rem" }}
+                variant="body2">
+                {label}
+            </Typography>
             <Box
                 sx={{
                     ...flexCenter,
@@ -23,7 +28,7 @@ const FlightIcon = ({ label }) => {
                 }}>
                 <Divider sx={{ width: "70%" }} />
                 <AirplanemodeActiveIcon
-                    sx={{ rotate: "90deg" }}
+                    sx={{ rotate: "90deg", mr: 2 }}
                     fontSize="small"
                     color="disabled"
                 />

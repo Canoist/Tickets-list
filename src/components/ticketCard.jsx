@@ -19,7 +19,7 @@ import FlightIcon from "./flightIcon";
 
 const TicketCard = ({ ticket }) => {
     return (
-        <Card sx={{ display: "flex", width: "520px", mb: 2 }}>
+        <Card sx={{ display: "flex", width: "550px", mb: 2, mx: 2 }}>
             <CardContent sx={{ p: 0 }}>
                 <Card sx={{ p: 2, borderRadius: 0 }}>
                     <Box sx={{ ...flexCenter }}>
@@ -38,15 +38,13 @@ const TicketCard = ({ ticket }) => {
                     </Button>
                 </Card>
             </CardContent>
-            <CardContent sx={{ flexGrow: "1", bgcolor: "gold" }}>
+            <CardContent sx={{ flexGrow: "1" }}>
                 <Box sx={{ ...flexCenter, justifyContent: "space-between" }}>
                     <Typography variant="h4">
                         {ticket.departure_time}
                     </Typography>
                     <FlightIcon label="Без пересадок" />
-                    <Typography variant="h4">
-                        {ticket.departure_time}
-                    </Typography>
+                    <Typography variant="h4">{ticket.arrival_time}</Typography>
                 </Box>
                 <Box></Box>
             </CardContent>
