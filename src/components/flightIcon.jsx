@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import AirplanemodeActiveIcon from "@mui/icons-material/AirplanemodeActive";
 import { Box, Divider, Typography } from "@mui/material";
 import { flexCenter } from "../innerStyles";
+import createLabel from "../utils.js/createLabel";
 
 const FlightIcon = ({ label }) => {
     return (
@@ -13,7 +14,7 @@ const FlightIcon = ({ label }) => {
                 flexDirection: "column",
             }}>
             <Typography component="p" variant="secondary">
-                {label}
+                {createLabel(label)}
             </Typography>
             <Box
                 sx={{
@@ -23,7 +24,7 @@ const FlightIcon = ({ label }) => {
                     top: "-4px",
                     pl: 2,
                 }}>
-                <Divider sx={{ width: "70%" }} />
+                <Divider sx={{ width: "120px" }} />
                 <AirplanemodeActiveIcon
                     sx={{ rotate: "90deg", mr: 2 }}
                     fontSize="small"
@@ -35,7 +36,7 @@ const FlightIcon = ({ label }) => {
 };
 
 FlightIcon.propTypes = {
-    label: PropTypes.string,
+    label: PropTypes.number,
 };
 
 export default FlightIcon;

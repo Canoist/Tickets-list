@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-    Box,
     Button,
     ButtonGroup,
     Card,
@@ -41,10 +40,15 @@ const FilterBox = () => {
             sx={{
                 p: 2,
                 mx: 2,
+                width: "220px",
             }}>
             <Typography
-                sx={{ textTransform: "uppercase" }}
-                variant="subtitle1"
+                sx={{
+                    fontWeight: 500,
+                    textTransform: "uppercase",
+                    fontSize: "0.9rem",
+                }}
+                paragraph
                 display="block">
                 Валюта
             </Typography>
@@ -58,7 +62,11 @@ const FilterBox = () => {
                 <Button>EUR</Button>
             </ButtonGroup>
             <Typography
-                sx={{ textTransform: "uppercase" }}
+                sx={{
+                    textTransform: "uppercase",
+                    fontSize: "0.875rem",
+                    fontWeight: 500,
+                }}
                 variant="body1"
                 display="block"
                 gutterBottom>
@@ -67,7 +75,6 @@ const FilterBox = () => {
             <List
                 sx={{
                     width: "100%",
-                    maxWidth: 360,
                     bgcolor: "background.paper",
                 }}
                 dense={true}>
@@ -77,16 +84,15 @@ const FilterBox = () => {
                     return (
                         <ListItem key={index} disablePadding>
                             <ListItemButton
-                                role={undefined}
+                                disableGutters
                                 onClick={handleToggle(value)}
                                 dense>
-                                <ListItemIcon sx={{ minWidth: "20px" }}>
+                                <ListItemIcon sx={{ minWidth: "20px", pl: 1 }}>
                                     <Checkbox
                                         edge="start"
                                         checked={checked.indexOf(value) !== -1}
                                         tabIndex={-1}
                                         size="small"
-                                        disableRipple
                                         inputProps={{
                                             "aria-labelledby": labelId,
                                         }}

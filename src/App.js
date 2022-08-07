@@ -1,10 +1,10 @@
-import FlightRoundedIcon from "@mui/icons-material/FlightRounded";
-import { Box, Icon, createTheme, ThemeProvider } from "@mui/material";
+import { Box, createTheme, ThemeProvider } from "@mui/material";
 import { useState } from "react";
 import FilterBox from "./components/ui/filterBox";
 import TicketsList from "./components/ui/ticketsList";
 import { flexCenter } from "./innerStyles";
 import ticketsJSON from "./mock/tickets";
+import MainIcon from "./components/mainIcon";
 
 const initialData = ticketsJSON;
 
@@ -15,10 +15,13 @@ const theme = createTheme({
             fontSize: "0.8rem",
         },
         body2: {
-            color: "rgba(0, 0, 0, 0.7)",
+            fontWeight: "500",
+            fontFamily: ["Montserrat", "sans-serif"].join(","),
         },
-        h4: {
-            color: "rgba(0, 0, 0, 0.7)",
+    },
+    palette: {
+        text: {
+            primary: "rgba(0, 0, 0, 0.7)",
         },
     },
 });
@@ -35,23 +38,7 @@ function App() {
                     flexDirection: "column",
                     bgcolor: "#E7EBF0",
                 }}>
-                <Icon
-                    sx={{
-                        backgroundColor: "#42a5f5",
-                        borderRadius: "50%",
-                        p: "15px",
-                        boxShadow: "0 0 16px grey",
-                        ...flexCenter,
-                        mb: 5,
-                    }}>
-                    <FlightRoundedIcon
-                        fontSize="large"
-                        sx={{
-                            color: "white",
-                            rotate: "60deg",
-                        }}
-                    />
-                </Icon>
+                <MainIcon />
                 <Box
                     sx={{
                         minWidth: "680px",

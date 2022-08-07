@@ -5,6 +5,7 @@ import correctPrice from "../utils.js/correctPrice";
 import { flexCenter } from "../innerStyles";
 import FlightIcon from "./flightIcon";
 import translateDate from "../utils.js/translateDate";
+import translateTime from "../utils.js/translateTime";
 
 // arrival_date: "12.05.18",
 // arrival_time: "22:10",
@@ -31,9 +32,16 @@ const TicketCard = ({ ticket }) => {
                         />
                     </Box>
                     <Button
-                        sx={{ mt: 2, width: 140, textTransform: "none" }}
+                        sx={{
+                            mt: 2,
+                            width: 140,
+                            textTransform: "none",
+                            lineHeight: 1.5,
+                        }}
                         variant="contained"
-                        color="warning">
+                        color="warning"
+                        // className="buttonHover"
+                    >
                         Купить
                         <br /> за {correctPrice(`${ticket.price}`)}₽
                     </Button>
@@ -42,10 +50,12 @@ const TicketCard = ({ ticket }) => {
             <CardContent sx={{ flexGrow: "1" }}>
                 <Box sx={{ ...flexCenter, justifyContent: "space-between" }}>
                     <Typography variant="h4">
-                        {ticket.departure_time}
+                        {translateTime(ticket.departure_time)}
                     </Typography>
-                    <FlightIcon label="Без пересадок" />
-                    <Typography variant="h4">{ticket.arrival_time}</Typography>
+                    <FlightIcon label={ticket.stops} />
+                    <Typography variant="h4">
+                        {translateTime(ticket.arrival_time)}
+                    </Typography>
                 </Box>
                 <Box
                     sx={{
@@ -54,14 +64,14 @@ const TicketCard = ({ ticket }) => {
                     }}>
                     <Typography variant="body2">
                         {ticket.origin}, {ticket.origin_name}
-                        <Typography component="div" variant="secondary">
+                        <Typography display="block" variant="secondary">
                             {translateDate(ticket.departure_date)}
                         </Typography>
                     </Typography>
                     <Typography variant="body2">
                         {ticket.destination_name}, {ticket.destination}
                         <Typography
-                            component="div"
+                            display="block"
                             align="right"
                             variant="secondary">
                             {translateDate(ticket.arrival_date)}
