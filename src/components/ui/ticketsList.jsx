@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Box } from "@mui/material";
 import TicketCard from "../ticketCard";
 
-const TicketsList = ({ data }) => {
+const TicketsList = ({ data, currency }) => {
     const { tickets } = data;
     console.log(tickets);
     return (
@@ -13,7 +13,7 @@ const TicketsList = ({ data }) => {
                 overflow: "auto",
             }}>
             {tickets.map((item, index) => (
-                <TicketCard key={index} ticket={item} />
+                <TicketCard key={index} ticket={item} currency={currency} />
             ))}
         </Box>
     );
@@ -21,6 +21,7 @@ const TicketsList = ({ data }) => {
 
 TicketsList.propTypes = {
     data: PropTypes.object,
+    currency: PropTypes.string,
 };
 
 export default TicketsList;

@@ -1,5 +1,6 @@
 const correctPrice = (price) => {
     if (price.length <= 3) {
+        console.log(price);
         return price;
     } else if (price.length <= 6) {
         return `${price.slice(0, -3)} ${price.slice(-3)}`;

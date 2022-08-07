@@ -11,6 +11,7 @@ import {
     ListItemText,
     Typography,
 } from "@mui/material";
+import PropTypes from "prop-types";
 
 const values = [
     "Все",
@@ -20,7 +21,7 @@ const values = [
     "3 пересадки",
 ];
 
-const FilterBox = () => {
+const FilterBox = ({ onChangeType, currency }) => {
     const [checked, setChecked] = useState([0]);
 
     const handleToggle = (value) => () => {
@@ -35,6 +36,11 @@ const FilterBox = () => {
 
         setChecked(newChecked);
     };
+
+    const handleChangeType = ({ target }) => {
+        onChangeType(target.id);
+    };
+
     return (
         <Card
             sx={{
@@ -57,9 +63,24 @@ const FilterBox = () => {
                 aria-label="outlined primary button group"
                 fullWidth
                 sx={{ mb: 3 }}>
-                <Button>RUB</Button>
-                <Button>USD</Button>
-                <Button>EUR</Button>
+                <Button
+                    id="rub"
+                    onClick={handleChangeType}
+                    variant={currency === "rub" ? "contained" : "outlined"}>
+                    RUB
+                </Button>
+                <Button
+                    id="usd"
+                    onClick={handleChangeType}
+                    variant={currency === "usd" ? "contained" : "outlined"}>
+                    USD
+                </Button>
+                <Button
+                    id="eur"
+                    onClick={handleChangeType}
+                    variant={currency === "eur" ? "contained" : "outlined"}>
+                    EUR
+                </Button>
             </ButtonGroup>
             <Typography
                 sx={{
@@ -107,4 +128,10 @@ const FilterBox = () => {
         </Card>
     );
 };
+
+FilterBox.propTypes = {
+    currency: PropTypes.string,
+    onChangeType: PropTypes.func,
+};
+
 export default FilterBox;

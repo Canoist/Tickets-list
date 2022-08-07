@@ -28,6 +28,12 @@ const theme = createTheme({
 
 function App() {
     const [tickets, setTickets] = useState(ticketsJSON);
+    const [currency, setCurrency] = useState("rub");
+
+    const handleChangeCurrency = (typeCurrnency) => {
+        setCurrency(typeCurrnency);
+    };
+
     return (
         <ThemeProvider theme={theme}>
             <Box
@@ -45,8 +51,8 @@ function App() {
                         ...flexCenter,
                         alignItems: "start",
                     }}>
-                    <FilterBox />
-                    <TicketsList data={tickets} />
+                    <FilterBox currency={currency} onChangeType={handleChangeCurrency} />
+                    <TicketsList data={tickets} currency={currency}/>
                 </Box>
             </Box>
         </ThemeProvider>

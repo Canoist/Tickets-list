@@ -6,6 +6,7 @@ import { flexCenter } from "../innerStyles";
 import FlightIcon from "./flightIcon";
 import translateDate from "../utils.js/translateDate";
 import translateTime from "../utils.js/translateTime";
+import calculatePrice from "../utils.js/calculatePrice";
 
 // arrival_date: "12.05.18",
 // arrival_time: "22:10",
@@ -19,7 +20,9 @@ import translateTime from "../utils.js/translateTime";
 // price: 12400,
 // stops: 3,
 
-const TicketCard = ({ ticket }) => {
+const TicketCard = ({ ticket, currency }) => {
+    const price = calculatePrice(ticket.price, currency);
+
     return (
         <Card sx={{ display: "flex", width: "550px", mb: 2, mx: 2 }}>
             <CardContent sx={{ p: 0 }}>
@@ -39,11 +42,14 @@ const TicketCard = ({ ticket }) => {
                             lineHeight: 1.5,
                         }}
                         variant="contained"
-                        color="warning"
-                        // className="buttonHover"
-                    >
+                        color="warning">
                         Купить
-                        <br /> за {correctPrice(`${ticket.price}`)}₽
+                        <br /> за {correctPrice(`${price}`)}
+                        {currency === "rub"
+                            ? "₽"
+                            : currency === "usd"
+                            ? "$"
+                            : "€"}
                     </Button>
                 </Card>
             </CardContent>
@@ -83,6 +89,9 @@ const TicketCard = ({ ticket }) => {
     );
 };
 
-TicketCard.propTypes = { ticket: PropTypes.object };
+TicketCard.propTypes = {
+    ticket: PropTypes.object,
+    currency: PropTypes.string,
+};
 
 export default TicketCard;
