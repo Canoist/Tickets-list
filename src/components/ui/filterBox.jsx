@@ -3,6 +3,7 @@ import {
     Box,
     Button,
     ButtonGroup,
+    Card,
     Checkbox,
     List,
     ListItem,
@@ -36,7 +37,11 @@ const FilterBox = () => {
         setChecked(newChecked);
     };
     return (
-        <Box sx={{ p: 2 }}>
+        <Card
+            sx={{
+                p: 2,
+                mx: 2,
+            }}>
             <Typography
                 sx={{ textTransform: "uppercase" }}
                 variant="subtitle1"
@@ -93,7 +98,7 @@ const FilterBox = () => {
                     );
                 })}
             </List>
-        </Box>
+        </Card>
     );
 };
 export default FilterBox;

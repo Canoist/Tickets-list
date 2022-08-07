@@ -7,7 +7,11 @@ const TicketsList = ({ data }) => {
     const { tickets } = data;
     console.log(tickets);
     return (
-        <Box sx={{ maxHeight: 500, overflow: "auto", maxWidth: 500 }}>
+        <Box
+            sx={{
+                maxHeight: 500,
+                overflow: "auto",
+            }}>
             {tickets.map((item, index) => (
                 <TicketCard key={index} ticket={item} />
             ))}

@@ -17,6 +17,7 @@ function App() {
                 p: 2,
                 ...flexCenter,
                 flexDirection: "column",
+                bgcolor: "#E7EBF0",
             }}>
             <Icon
                 sx={{
@@ -37,8 +38,7 @@ function App() {
             </Icon>
             <Box
                 sx={{
-                    backgroundColor: "gold",
-                    maxWidth: "680px",
+                    minWidth: "680px",
                     ...flexCenter,
                     alignItems: "start",
                 }}>
