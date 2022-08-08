@@ -71,7 +71,7 @@ function App() {
                 <MainIcon />
                 <Box
                     sx={{
-                        width: "100%",
+                        minWidth: "100%",
                         ...flexCenter,
                         alignItems: "start",
                     }}>

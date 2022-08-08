@@ -8,8 +8,8 @@ const TicketsList = ({ data, currency }) => {
     return (
         <Box
             sx={{
-                maxHeight: 500,
-                overflow: "auto",
+                height: 500,
+                overflow: "scroll",
             }}>
             {data.map((item, index) => (
                 <TicketCard key={index} ticket={item} currency={currency} />
