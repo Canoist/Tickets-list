@@ -5,7 +5,6 @@ import TicketCard from "../ticketCard";
 import "./ticketsList.css";
 
 const TicketsList = ({ data, currency }) => {
-    console.log(data);
     return (
         <Box
             className="scroll-hidden"

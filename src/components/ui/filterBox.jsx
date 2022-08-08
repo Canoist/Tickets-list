@@ -1,17 +1,8 @@
 import React from "react";
-import {
-    Card,
-    Checkbox,
-    List,
-    ListItem,
-    ListItemButton,
-    ListItemIcon,
-    ListItemText,
-    Typography,
-} from "@mui/material";
+import { Card, List, Typography } from "@mui/material";
 import PropTypes from "prop-types";
 import CurrencyControl from "./currentControl";
-import createLabel from "../../utils.js/createLabel";
+import FilterList from "./filterList";
 
 const FilterBox = ({
     onChangeType,
@@ -48,28 +39,13 @@ const FilterBox = ({
                 {stopValues.map((stops, index) => {
                     const labelId = `checkbox-list-label-${index}`;
                     return (
-                        <ListItem key={index} disablePadding>
-                            <ListItemButton
-                                disableGutters
-                                onClick={onToggle(stops)}
-                                dense>
-                                <ListItemIcon sx={{ minWidth: "20px", pl: 1 }}>
-                                    <Checkbox
-                                        edge="start"
-                                        checked={checked.indexOf(stops) !== -1}
-                                        tabIndex={-1}
-                                        size="small"
-                                        inputProps={{
-                                            "aria-labelledby": labelId,
-                                        }}
-                                    />
-                                </ListItemIcon>
-                                <ListItemText
-                                    id={labelId}
-                                    primary={createLabel(stops)}
-                                />
-                            </ListItemButton>
-                        </ListItem>
+                        <FilterList
+                            key={index}
+                            stops={stops}
+                            onToggle={onToggle}
+                            labelId={labelId}
+                            checked={checked}
+                        />
                     );
                 })}
             </List>
