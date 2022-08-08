@@ -2,14 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Box } from "@mui/material";
 import TicketCard from "../ticketCard";
+import "./ticketsList.css";
 
 const TicketsList = ({ data, currency }) => {
     console.log(data);
     return (
         <Box
+            className="scroll-hidden"
             sx={{
                 height: 500,
-                overflow: "scroll",
             }}>
             {data.map((item, index) => (
                 <TicketCard key={index} ticket={item} currency={currency} />
