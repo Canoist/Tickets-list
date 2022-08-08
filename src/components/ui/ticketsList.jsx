@@ -4,15 +4,14 @@ import { Box } from "@mui/material";
 import TicketCard from "../ticketCard";
 
 const TicketsList = ({ data, currency }) => {
-    const { tickets } = data;
-    console.log(tickets);
+    console.log(data);
     return (
         <Box
             sx={{
                 maxHeight: 500,
                 overflow: "auto",
             }}>
-            {tickets.map((item, index) => (
+            {data.map((item, index) => (
                 <TicketCard key={index} ticket={item} currency={currency} />
             ))}
         </Box>
@@ -20,7 +19,7 @@ const TicketsList = ({ data, currency }) => {
 };
 
 TicketsList.propTypes = {
-    data: PropTypes.object,
+    data: PropTypes.array,
     currency: PropTypes.string,
 };
 

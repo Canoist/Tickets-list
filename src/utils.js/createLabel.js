@@ -1,5 +1,8 @@
 const createLabel = (value) => {
     switch (value) {
+        case null:
+            return "Все";
+
         case 0:
             return "Без пересадок";
 

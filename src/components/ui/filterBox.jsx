@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
     Card,
     Checkbox,
@@ -11,31 +11,15 @@ import {
 } from "@mui/material";
 import PropTypes from "prop-types";
 import CurrencyControl from "./currentControl";
+import createLabel from "../../utils.js/createLabel";
 
-const values = [
-    "Все",
-    "Без пересадок",
-    "1 пересадка",
-    "2 пересадки",
-    "3 пересадки",
-];
-
-const FilterBox = ({ onChangeType, currency }) => {
-    const [checked, setChecked] = useState([0]);
-
-    const handleToggle = (value) => () => {
-        const currentIndex = checked.indexOf(value);
-        const newChecked = [...checked];
-
-        if (currentIndex === -1) {
-            newChecked.push(value);
-        } else {
-            newChecked.splice(currentIndex, 1);
-        }
-
-        setChecked(newChecked);
-    };
-
+const FilterBox = ({
+    onChangeType,
+    currency,
+    stopValues,
+    onToggle,
+    checked,
+}) => {
     return (
         <Card
             sx={{
@@ -61,18 +45,18 @@ const FilterBox = ({ onChangeType, currency }) => {
                     bgcolor: "background.paper",
                 }}
                 dense={true}>
-                {values.map((value, index) => {
+                {stopValues.map((stops, index) => {
                     const labelId = `checkbox-list-label-${index}`;
                     return (
                         <ListItem key={index} disablePadding>
                             <ListItemButton
                                 disableGutters
-                                onClick={handleToggle(value)}
+                                onClick={onToggle(stops)}
                                 dense>
                                 <ListItemIcon sx={{ minWidth: "20px", pl: 1 }}>
                                     <Checkbox
                                         edge="start"
-                                        checked={checked.indexOf(value) !== -1}
+                                        checked={checked.indexOf(stops) !== -1}
                                         tabIndex={-1}
                                         size="small"
                                         inputProps={{
@@ -80,7 +64,10 @@ const FilterBox = ({ onChangeType, currency }) => {
                                         }}
                                     />
                                 </ListItemIcon>
-                                <ListItemText id={labelId} primary={value} />
+                                <ListItemText
+                                    id={labelId}
+                                    primary={createLabel(stops)}
+                                />
                             </ListItemButton>
                         </ListItem>
                     );
@@ -93,6 +80,9 @@ const FilterBox = ({ onChangeType, currency }) => {
 FilterBox.propTypes = {
     currency: PropTypes.string,
     onChangeType: PropTypes.func,
+    stopValues: PropTypes.array,
+    onToggle: PropTypes.func,
+    checked: PropTypes.array,
 };
 
 export default FilterBox;
